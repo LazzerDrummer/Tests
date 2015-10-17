@@ -4,7 +4,6 @@ public class Lines {
 
 	public static void main(String[] args) {
 		int [] sir= {3,2,7,9,3,56,456,46,456,56,5,7865,3453,75,3,67,765,3,542,756,35,3,1};
-		int t=sir.length;
 		int a;
 //		if (t%2!=0)
 //			t=t-1;
