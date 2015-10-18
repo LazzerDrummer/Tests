@@ -2,7 +2,7 @@
 public class Stringtoint {
 
 	public static void main(String[] args) {
-		String c = "00345555555555556.45634566456456456456" ; 
+		String c = "4567.789" ; 
 		byte commaCode=46;
 		byte zeroCode=48;
 		
