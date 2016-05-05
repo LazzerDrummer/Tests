@@ -2,7 +2,7 @@
 public class cartele {
 
 	public static void main(String[] args) {
-		int n=3,c=2;
+		int n=3,c=2,i;
 		int [][]sablon=new int[][]{{1,1,0},
 							   	   {0,0,1},
 							       {1,0,0}};
@@ -15,94 +15,116 @@ public class cartele {
 			   	   					{1,0,0},
 			   	   					{0,1,0}}
 		   	   						};
-		int indexcartele,row,column;
-		boolean sol=true;
+		int indexcartele;
+		boolean sol=false;
 		for(indexcartele=0;indexcartele<c;indexcartele++)
 		{
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
+			sol=false;
+			for(i=0;i<4;i++)
 			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][row][column]){sol=false;break out;}
-				}
+				sol=checkCard(n,sablon,cartele[indexcartele],i*90);
+				if(sol)break;
+				sol=checkMirrorCard(n,sablon,cartele[indexcartele],i*90);
 			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][column][n-1-row]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][n-1-row][n-1-column]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][n-1-column][row]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][row][n-1-column]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][n-1-column][n-1-row]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][n-1-row][column]){sol=false;break out;}
-				}
-			}
-			if(sol){System.out.println(1);continue;}
-			sol=true;
-			out:
-			for(row=0;row<n;row++)
-			{
-				for(column=0;column<n;column++)
-				{
-					if(sablon[row][column]!=cartele[indexcartele][column][row]){sol=false;break out;}
-				}
-			}
+			
 			if(sol){System.out.println(1);continue;}
 			if(!sol)System.out.println(0);
 		}
+		
+		
 	}
-
+	
+	public static boolean checkCard(int n,int [][]sablon,int [][]cartele,int degree)
+	{
+		int column,row;
+		if(degree==0){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[row][column])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==90){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[column][n-1-row])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==180){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[n-1-row][n-1-column])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==270){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[n-1-column][row])return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean checkMirrorCard(int n,int [][]sablon,int [][]cartele,int degree)
+	{
+		int column,row;
+		if(degree==0){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[row][n-1-column])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==90){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[n-1-column][n-1-row])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==180){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[n-1-row][column])return false;
+				}
+			}
+			return true;
+		}
+		else if(degree==270){
+			for(row=0;row<n;row++)
+			{
+				for(column=0;column<n;column++)
+				{
+					if(sablon[row][column]!=cartele[column][row])return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 }
 
 
