@@ -3,9 +3,10 @@
 public class Pare {
 
 	public static void main(String[] args) {
-		long i=1,f=0,a=0,b=2000000000,n=10,p,n2=10,c2,Doi=0,aux;
+		long i=1,f=0,a=0,b=2000000000,n=10,p,n2=10,c2,Doi=0;
 		if(a%2==1)a+=1;
 		if(b%2==1)b-=1;
+		//int n=10,n2=10,aux;
 //		for(n=a;n<=b;n+=2)
 //		{
 //			//if(n%10000000==0)System.out.println(n+" ");
