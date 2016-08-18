@@ -25,11 +25,11 @@ class Painting extends JComponent {
 public class Ezrubber {
 	public static int Rectx = 500;
 	public static int Recty = 500;
-	public static int diameter = 6;
+	public static int diameter =14;
 	public static double x=100;
-	public static double y=350;
-	public static double vx=330;
-	public static double vy=270;
+	public static double y=10;
+	public static double vx=100;
+	public static double vy=130;
 	public static double dt=0.008;
 	public static double km=10;
 	public static double kf=0.1;
@@ -58,19 +58,30 @@ public class Ezrubber {
 	public static void timeStep(){
 //		double a = -km*(x-200);
 		double ax=0;
-		double ay=0;
+		double ay=50;
 		ax-=vx*kf;
 		vx+=ax*dt;
 		x+=vx*dt;
 		ay-=vy*kf;
 		vy+=ay*dt;
 		y+=vy*dt;
-		if(x<=0 || x>=(Rectx-diameter/2)){
+		if(x>(Recty-diameter/2)){
 			vx*=-1;
+			x=(Recty-diameter/2);
 		}
-		if(y<=0 || y>=(Recty-diameter/2)){
+		if(x<=diameter/2){
+			vx*=-1;
+			x=diameter/2;
+		}
+		if(y>(Recty-diameter/2)){
 			vy*=-1;
+			y=(Recty-diameter/2);
 		}
+		if(y<=diameter/2){
+			vy*=-1;
+			y=diameter/2;
+		}
+		System.out.println(vy+" "+y);
 	}
 
 }
