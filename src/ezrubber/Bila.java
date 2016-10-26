@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Bila {
 	Masa masaPeCareSunt;
 	double m=1;
-	int diameter = 5;
+	int diameter = 36;
 	double x=100;
 	double y=10;
 	double vx=100;
@@ -52,5 +52,13 @@ public class Bila {
 			y=diameter/2;
 		}
 		
+	}
+
+	public boolean isTouching(Bila bila) {
+		if(Math.sqrt(((x-bila.x)*(x-bila.x))+((y-bila.y)*(y-bila.y)))<=diameter/2+bila.diameter/2)
+		{
+			return true;
+		}
+		else return false;
 	}
 }

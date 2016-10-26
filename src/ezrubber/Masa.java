@@ -1,13 +1,12 @@
 package ezrubber;
 
 import java.awt.Graphics;
-
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class Masa extends JComponent{
-	int Rectx = 1800;
-	int Recty = 1000;
+	int Rectx = 200;
+	int Recty = 200;
 	Bila[] bilele;
 	
 	public Masa(int numarBile){
@@ -31,4 +30,19 @@ public class Masa extends JComponent{
 		}
 		
 	}
+	
+	public void Collision (Bila[]bila) {
+		int i,j;
+		for(i=0;i< bila.length;i++)
+		{
+			for(j=i+1;j<bila.length;j++)
+			{
+				if(bila[i].isTouching(bila[j]))
+				{
+				System.out.println("boop");
+				}
+			}
+		}
+	}
+	
 }

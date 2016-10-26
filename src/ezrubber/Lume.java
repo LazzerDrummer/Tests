@@ -3,10 +3,10 @@ package ezrubber;
 import javax.swing.JFrame;
 
 public class Lume {
-	public static double DT=0.001;
+	public static double DT=0.0005;
 	public static double KF=0;
-	public static int NUMAR_BILE = 30000;
-	public static double GX=50;
+	public static int NUMAR_BILE = 2;
+	public static double GX=0;
 	public static double GY=50;
 	Masa masa;
 	JFrame window;
@@ -24,6 +24,7 @@ public class Lume {
 	private void porneste() {
 		for(int step=0;step<1000000;step++)
 		{
+			masa.Collision(masa.bilele);
 	    	masa.timeStep();
 			window.repaint();
 			try {
