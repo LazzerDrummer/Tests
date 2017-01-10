@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Bila {
 	Masa masaPeCareSunt;
 	double m=1;
-	int diameter = 36;
+	int diameter = 50;
 	double x=100;
 	double y=10;
 	double vx=100;
@@ -15,8 +15,8 @@ public class Bila {
 		masaPeCareSunt = masa;
 		x=diameter/2+Math.random()*(masa.Rectx-diameter);
 		y=diameter/2+Math.random()*(masa.Recty-diameter);
-		vx=(Math.random()-0.5)*200;
-		vy=(Math.random()-0.5)*200;
+		vx=(Math.random()-0.5)*400;
+		vy=(Math.random()-0.5)*400;
 	}
 
 	public void drawNotFilledCenteredCircle(Graphics g) 
@@ -60,5 +60,9 @@ public class Bila {
 			return true;
 		}
 		else return false;
+	}
+
+	public double getE() {
+		return vx*vx+vy*vy;
 	}
 }
