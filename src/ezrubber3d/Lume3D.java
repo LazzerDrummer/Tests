@@ -5,10 +5,12 @@ import javax.swing.JFrame;
 public class Lume3D {
 	public static double DT=0.001; //0.1
 	public static double KF=0;  //0.2
-	public static int NUMAR_BILE = 0;
+	public static int NUMAR_BILE = 1;
 	public static double GX=0;
-	public static double GY=100; // 100
+	public static double GY=0; // 100
+	public static double GZ=0;
 	public static double CP=0.7;
+	public static double N=1.4;
 	public static double Radical2 = 0.7071;
 	
 	Cutie cutie;

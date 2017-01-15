@@ -23,12 +23,12 @@ public class Cutie extends JComponent{
 			bilele[i].drawNotFilledCenteredCircle(g);
 		}
 		int ze = (int)(Rectz*Lume3D.CP*Lume3D.Radical2);
-		g.drawRect (0, ze, Rectx, Recty);
-		g.drawRect (ze, 0, Rectx, Recty);
-		g.drawLine(0, ze, ze, 0);
-		g.drawLine(ze, Recty, 0, ze+Recty);
-		g.drawLine(Rectx, ze, ze+Rectx, 0);
-		g.drawLine(Rectx, Recty+ze, Rectx+ze, Recty);
+		g.drawRect (0, 0, Rectx, Recty);
+		g.drawRect (ze, ze, Rectx, Recty);
+		g.drawLine(0, 0, ze, ze);
+		g.drawLine(0, Recty, ze, ze+Recty);
+		g.drawLine(Rectx, 0, ze+Rectx, ze);
+		g.drawLine(Rectx, Recty, Rectx+ze, Recty+ze);
 	}
 
 	public void timeStep() {
