@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public class Bila3D {
 	Cutie masaPeCareSunt;
 	double m=1;
-	int diameter = 50;
+	int diameter = 1;
 	double x=100;
 	double y=10;
 	double z=10;
@@ -32,7 +32,7 @@ public class Bila3D {
 		  g.drawOval(mx,my,zdiameter,zdiameter);
 	}
 
-	public void timeStep() {
+	public double timeStep() {
 		double ax=Lume3D.GX;
 		double ay=Lume3D.GY;
 		double az=Lume3D.GZ;
@@ -47,30 +47,38 @@ public class Bila3D {
 		az-=vz*Lume3D.KF;
 		vz+=az*Lume3D.DT;
 		z+=vz*Lume3D.DT;
+		double pressure=0;
 		if(x>(masaPeCareSunt.Rectx-diameter/2)){
 			vx*=-1;
+			pressure+=Math.abs(vx);
 			x=(masaPeCareSunt.Rectx-diameter/2);
 		}
 		if(x<=diameter/2){
 			vx*=-1;
+			pressure+=Math.abs(vx);
 			x=diameter/2;
 		}
 		if(y>(masaPeCareSunt.Recty-diameter/2)){
 			vy*=-1;
+			pressure+=Math.abs(vy);
 			y=(masaPeCareSunt.Recty-diameter/2);
 		}
 		if(y<=diameter/2){
 			vy*=-1;
+			pressure+=Math.abs(vy);
 			y=diameter/2;
 		}
 		if(z>(masaPeCareSunt.Rectz-diameter/2)){
 			vz*=-1;
+			pressure+=Math.abs(vz);
 			z=(masaPeCareSunt.Rectz-diameter/2);
 		}
 		if(z<=diameter/2){
 			vz*=-1;
+			pressure+=Math.abs(vz);
 			z=diameter/2;
 		}
+		return pressure;
 		
 	}
 

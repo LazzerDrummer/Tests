@@ -5,10 +5,13 @@ import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public class Cutie extends JComponent{
-	int Rectx = 300;
-	int Recty = 300;
-	int Rectz = 300;
+	int Rectx = 700;
+	int Recty = 700;
+	int Rectz = 700;
 	Bila3D[] bilele;
+	double pressure=0;
+	double area=2*(Rectx*Recty)+2*(Rectx*Rectz)+2*(Rectz*Recty);
+	double volume=Rectx*Recty*Rectz;
 	
 	public Cutie(int numarBile){
 		bilele= new Bila3D[numarBile];
@@ -31,11 +34,16 @@ public class Cutie extends JComponent{
 		g.drawLine(Rectx, Recty, Rectx+ze, Recty+ze);
 	}
 
-	public void timeStep() {
-		for (int i = 0; i < bilele.length; i++) {
-			bilele[i].timeStep();
-		}
+	public void timeStep(int step) {
 		
+		for (int i = 0; i < bilele.length; i++) {
+			pressure+=bilele[i].timeStep();
+		}
+		if(step%1000==0){
+			pressure=pressure/(1000*area);
+			System.out.println(pressure*volume);
+			pressure=0;
+		}
 	}
 	
 	public void checkCollisions (Bila3D[]bila) 

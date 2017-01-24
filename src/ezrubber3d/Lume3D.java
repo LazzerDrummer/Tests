@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class Lume3D {
 	public static double DT=0.001; //0.1
 	public static double KF=0;  //0.2
-	public static int NUMAR_BILE = 1;
+	public static int NUMAR_BILE = 2000;
 	public static double GX=0;
 	public static double GY=0; // 100
 	public static double GZ=0;
@@ -30,7 +30,7 @@ public class Lume3D {
 		for(int step=0;step<1000000;step++)
 		{
 			cutie.checkCollisions(cutie.bilele);
-	    	cutie.timeStep();
+	    	cutie.timeStep(step);
 			window.repaint();
 			try {
 				Thread.sleep(1);
