@@ -1,18 +1,22 @@
-package ezrubber;
+package ezrubber3d;
 
 import java.awt.Graphics;
 import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
-public class Masa extends JComponent{
-	int Rectx = 800;
-	int Recty = 800;
-	Bila[] bilele;
+public class Cutie extends JComponent{
+	int Rectx = 700;
+	int Recty = 700;
+	int Rectz = 700;
+	Bila3D[] bilele;
+	double pressure=0;
+	double area=2*(Rectx*Recty)+2*(Rectx*Rectz)+2*(Rectz*Recty);
+	double volume=Rectx*Recty*Rectz;
 	
-	public Masa(int numarBile){
-		bilele= new Bila[numarBile];
+	public Cutie(int numarBile){
+		bilele= new Bila3D[numarBile];
 		for (int i = 0; i < bilele.length; i++) {
-			bilele[i] = new Bila(this);
+			bilele[i] = new Bila3D(this);
 		}
 	}
 	
@@ -21,17 +25,28 @@ public class Masa extends JComponent{
 		for (int i = 0; i < bilele.length; i++) {
 			bilele[i].drawNotFilledCenteredCircle(g);
 		}
+		int ze = (int)(Rectz*Lume3D.CP*Lume3D.Radical2);
 		g.drawRect (0, 0, Rectx, Recty);
+		g.drawRect (ze, ze, Rectx, Recty);
+		g.drawLine(0, 0, ze, ze);
+		g.drawLine(0, Recty, ze, ze+Recty);
+		g.drawLine(Rectx, 0, ze+Rectx, ze);
+		g.drawLine(Rectx, Recty, Rectx+ze, Recty+ze);
 	}
 
-	public void timeStep() {
-		for (int i = 0; i < bilele.length; i++) {
-			bilele[i].timeStep();
-		}
+	public void timeStep(int step) {
 		
+		for (int i = 0; i < bilele.length; i++) {
+			pressure+=bilele[i].timeStep();
+		}
+		if(step%1000==0){
+			pressure=pressure/(1000*area);
+			System.out.println(pressure*volume);
+			pressure=0;
+		}
 	}
 	
-	public void checkCollisions (Bila[]bila) 
+	public void checkCollisions (Bila3D[]bila) 
 	{
 		for(int i=0;i< bila.length;i++)
 		{
@@ -45,7 +60,7 @@ public class Masa extends JComponent{
 		}
 	}
 	
-	public void switchVelocities (Bila bila1, Bila bila2)
+	public void switchVelocities (Bila3D bila1, Bila3D bila2)
 	{
 		PointDouble2D vap1 = rotateVelocity(new PointDouble2D(bila1.vx, bila1.vy),
 				new PointDouble2D(bila2.x-bila1.x, bila2.y-bila1.y));
