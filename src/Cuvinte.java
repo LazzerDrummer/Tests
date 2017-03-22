@@ -41,7 +41,7 @@ public class Cuvinte {
 		{
 			if(ub[y]==ua[j]) {y--;j++;}
 			else break;
-		}
+		} 
 		System.out.println(j);
 		
 //		for(i=0;i<a.length;i++)
