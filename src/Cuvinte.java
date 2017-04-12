@@ -3,7 +3,7 @@ public class Cuvinte {
 
 	public static void main(String[] args) {
 		
-		String sa="EDFCBMZYA";
+		String sa="dcbarg";
 		byte[] a=sa.getBytes();
 		int i,j=0,y=0;
 		char aux;
