@@ -7,7 +7,7 @@ class MyCanvas extends JComponent {
 	private static final long serialVersionUID = 7684382000314660093L;
 	public void paint(Graphics g) {
 		//The variable zoom zooms the function. Also Increases the number of pixels added at x=x+0.01/zoom.
-		double zoom=100;
+		double zoom=50;
 	    g.drawLine(0,500,1000,500);
 	    g.drawLine(500, 0, 500, 1000);
 	
